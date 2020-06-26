@@ -9,7 +9,9 @@ import { ParkingService } from '../parking.service';
 export class HomePage {
 
   constructor(private parkingService: ParkingService) {
-    this.parkingService.getParkingData();
   }
 
+  ngAfterViewInit() {
+    this.parkingService.getParkingData();
+  }
 }

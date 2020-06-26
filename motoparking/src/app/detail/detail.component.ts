@@ -24,14 +24,14 @@ export class DetailComponent implements OnInit {
   ngOnInit() { }
 
   loadDetail(data: Parking) {
-    this.calle = data.CALLE + " nº " + data.NUMERO;
+    this.calle = data.CALLE + " Nº " + data.NUMERO;
     this.barrio = data.BARRIO;
     this.capacidad = this.getCapacidad(data.LONGITUD);
     this.navigate = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(this.calle + " Vitoria-Gasteiz");
   }
 
   getCapacidad(capacidad: number) {
-    return Math.floor(capacidad / long_moto);
+    return Math.floor(this.toNumber(capacidad) / long_moto);
   }
 
   goTo() {
@@ -40,5 +40,9 @@ export class DetailComponent implements OnInit {
 
   counter(i: number) {
     return new Array(i);
+  }
+
+  toNumber(capacidad: number) {
+    return Number(capacidad.toString().replace(",", "."));
   }
 }

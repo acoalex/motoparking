@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MapComponent } from '../map/map.component';
 import { DetailComponent } from '../detail/detail.component';
@@ -13,6 +13,7 @@ import { DetailComponent } from '../detail/detail.component';
   imports: [
     CommonModule
   ],
-  exports: [MapComponent, DetailComponent]
+  exports: [MapComponent, DetailComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule { }

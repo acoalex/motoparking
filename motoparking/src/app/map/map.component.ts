@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Map, tileLayer, marker } from 'leaflet';
 import { EventsService } from '../events.service';
 import { Parking } from '../model/parking';
@@ -8,18 +8,21 @@ import { Parking } from '../model/parking';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnDestroy {
   map: Map;
 
   constructor(private events: EventsService) {
     console.log("Map init");
     this.events.subscribe('parkings:loaded', (data: any) => {
+      this.loadMap();
       this.loadParkings(data.data);
     });
   }
+  ngOnDestroy(): void {
+    this.map.remove();
+  }
 
   ngOnInit() {
-    this.loadMap();
   }
 
   loadMap() {
@@ -48,9 +51,5 @@ export class MapComponent implements OnInit {
         time: new Date()
       });
     });
-  }
-
-  getOptions() {
-
   }
 }

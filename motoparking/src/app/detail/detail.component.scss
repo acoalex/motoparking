@@ -7,7 +7,8 @@ ion-icon {
 }
 
 ion-icon.navigate {
-    zoom: 2.5;
+    zoom: 1.8;
+    padding: 4px;
 }
 
 span {
@@ -15,6 +16,30 @@ span {
 }
 
 ion-grid.detail {
-    padding-top: 4px;
+    background-color: #2A292B;
     text-align: center;
+
+    ion-row {
+        height: 100%;
+    }
+}
+
+ion-row.center {
+    p {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.container {
+    position: relative;
+    height: 15%;
+}
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
