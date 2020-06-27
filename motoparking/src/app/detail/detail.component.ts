@@ -24,7 +24,11 @@ export class DetailComponent implements OnInit {
   ngOnInit() { }
 
   loadDetail(data: Parking) {
-    this.calle = data.CALLE + " Nº " + data.NUMERO;
+    this.calle = data.CALLE;
+    if (data.NUMERO) {
+      this.calle += " Nº " + data.NUMERO
+    }
+
     this.barrio = data.BARRIO;
     this.capacidad = this.getCapacidad(data.LONGITUD);
     this.navigate = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(this.calle + " Vitoria-Gasteiz");

@@ -1,12 +1,18 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Motoparking Gasteiz
+      Motoparking {{city}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- Fixed Floating Action Button that does not scroll with the content -->
+  <ion-fab slot="fixed" size="small" horizontal="end" vertical="top">
+    <ion-fab-button (click)="clickMenu()">
+      <ion-icon name="reorder-three-sharp"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <app-map></app-map>
   <app-detail></app-detail>
 </ion-content>

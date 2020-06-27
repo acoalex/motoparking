@@ -10,8 +10,8 @@ export class Parking {
     X: string;
     Y: string;
 
-    constructor() {
 
+    constructor() {
     }
 
     static fromJson(json: any): Parking[] {
@@ -20,6 +20,20 @@ export class Parking {
             parking.push(Object.assign(new Parking(), element));
         });
         return parking;
+    }
+
+    static fromJsonDonosti(json: any): Parking[] {
+        let parkings: Parking[] = [];
+        json.forEach(element => {
+            let parking = new Parking();
+            parking.BARRIO = element.properties.Barrio;
+            parking.CALLE = element.properties.NomCalle;
+            parking.LONGITUD = element.properties.MetroLinea;
+            parking.LONG = element.geometry.coordinates[1];
+            parking.LAT = element.geometry.coordinates[0];
+            parkings.push(parking);
+        });
+        return parkings;
     }
 
     getLat() {
